@@ -19,7 +19,20 @@ app.use(bodyParser.json());
 
 app.use(cors());
 
-app.get("/warhead/status", (request, res) => {
+se(cors());
+
+const whitelist = ["http://localhost:4200"];
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+};
+
+app.get("/warhead/status",  cors(corsOptions), (request, res) => {
   var textArray = ["online", "offline"];
   var randomNumber = Math.floor(Math.random() * textArray.length);
   var result = textArray[randomNumber];
@@ -29,7 +42,7 @@ app.get("/warhead/status", (request, res) => {
   res.send(result);
 });
 
-app.post("/warhead/launch/:code", (request, res) => {
+app.post("/warhead/launch/:code",   cors(corsOptions),(request, res) => {
   var date = "200807"; //new Date().toISOString("yyMMdd");
   var secret = "NICEGAMEOFCHESS";
 
