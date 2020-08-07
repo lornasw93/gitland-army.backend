@@ -14,7 +14,7 @@ var PORT = process.env.PORT || 5000;
 
 app.use(cors());
 
-const whitelist = ["http://localhost:4200"];
+const whitelist = ["http://localhost:4200",'https://gitland-army-backend.herokuapp.com'];
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
