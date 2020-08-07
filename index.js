@@ -42,9 +42,7 @@ app.post("/warhead/launch/:code",   cors(corsOptions),(request, res) => {
   //console.log(request.body.code);
 
   if (request.body.code === `${date}${secret}`) {
-    res.status(200).send({
-      message: "success",
-    });
+    res.send("success");
   } else {
     response.status(400).send({
       message: "failure",
