@@ -19,8 +19,6 @@ app.use(bodyParser.json());
 
 app.use(cors());
 
-se(cors());
-
 const whitelist = ["http://localhost:4200"];
 const corsOptions = {
   origin: function (origin, callback) {
